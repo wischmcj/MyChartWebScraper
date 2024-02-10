@@ -43,11 +43,11 @@ with requests.session() as auth_session:
     token = html.find("input", {"name": "__RequestVerificationToken"}).attrs["value"] 
     payload = { "__RequestVerificationToken": token, "DeviceId": Device_id, "postLoginUrl": "", "LoginInfo": login_info}
     req = auth_session.post(post_url,data=payload)
-    r = auth_session.get(medication_url) 
-    soup = BeautifulSoup (r.content, "html.parser") 
-    med_page = auth_session.get(given_Day_meds)
-    med_parser = BeautifulSoup(med_page.content, "html.parser")
-    med_elements = med_parser.find_all("td")
+    r = auth_session.get(medication_url).content.decode()
+    soup = BeautifulSoup (r, "html.parser") 
+    med_page = auth_session.get(given_Day_meds).content.decode()
+    med_parser = BeautifulSoup(med_page, "html.parser")
+    med_elements =med_parser.find_all("td")
 
 	# usernameDiv = soup.find("span", class_="p-nickname vcard-username d-block") 
     breakpoint()
@@ -55,21 +55,6 @@ with requests.session() as auth_session:
     breakpoint()
     auth_session.close()
     html.find()
-
-
-# with requests.session() as scrape_sesh: 
-# 	req = auth_session.get(post_url,payload=payload)
-# 	html = BeautifulSoup(req,"html.parser") 
-
-# LoginInfo={"Type":"StandardLogin","Credentials":{"Username":"Q3dpc2NobWV5","Password":"TXlDaGFydHB3MzMh"}}
-# s = requests.session() 
-# response = s.post(URL, data=payload) 
-# print(response.status_code) # If the request went Ok we usually get a 200 status. 
- 
-# soup = BeautifulSoup(response.content, "html.parser") 
-# protected_content = soup.find(attrs={"id": "pageName"}).text 
-# print(protected_content)
-
 
 
 def prescription_list(row):     

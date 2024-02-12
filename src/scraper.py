@@ -1,6 +1,8 @@
 import requests
 import itertools
 from datetime import datetime, time
+from calendar import month_name
+
 import re
 import logging
 from dataclasses import dataclass
@@ -115,7 +117,7 @@ def process_daily_meds(med_elements):
     
     #splitting out time (if applicable)
     split = [s.split(' - ', maxsplit=1) for s in unicode_removed]
-    log.info(f'split: {split}')
+    # log.info(f'split: {split}')
 
     try:
         time, med_dose_tag = zip(*split)
@@ -157,8 +159,8 @@ def process_daily_meds(med_elements):
     to_dose = [clean(arr) for arr in [qty, units, date, time, ips, ivpb, override]]
     dose_objs = [Dose(*row) for row in zip(*to_dose)]
     
-    log.info(f'med_objs: {med_objs}')
-    log.info(f'dose_objs: {dose_objs}')
+    # log.info(f'med_objs: {med_objs}')
+    # log.info(f'dose_objs: {dose_objs}')
     return med_objs, dose_objs
 
 def configure_log():
@@ -193,22 +195,23 @@ def build_glance_urls(cat = '999', dats= [''], tods:list[str] = ['1','2','3','4'
 def get_meds(session, url):
     med_page = session.get(given_Day_meds).content.decode("utf-8")
     med_parser = BeautifulSoup(med_page, "html.parser")
-    breakpoint()
-    med_date = med_parser.find("th").text
-    med_date = med_date.split(' ')
-    to_replace = ['<th colspan="2">','</th>','Monrning','Afternoon','Evening','Overnight','Medications For']
-    for string in to_replace:
-        med_date = med_date.replace(string,'')
-    
-    d = datetime.strptime(s, '%d %B, %Y')
 
-    med_elements =med_parser.find_all("td")
+    dose_date_ele = med_parser.find("th").text
+    dose_date_ele = dose_date_ele.replace(',','').split(' ')
+    med_date_mo = dose_date_ele[-3]
+    mo_num = [idx for idx, item in enumerate(month_name) if item == med_date_mo][0]
+    dose_date = datetime(int(dose_date_ele[-1]), mo_num, int(dose_date_ele[-2]) )
+
+    med_elements = med_parser.find_all("td")
     
     log.info(f'med_elements for {url}:  {med_elements}')
     
-    daily_meds_with_mismatching = process_daily_meds(med_elements)
+    med_objs, dose_objs = process_daily_meds(med_elements)
 
-    return daily_meds_with_mismatching
+    for dose_obj in dose_objs:
+        dose_obj.date = dose_date
+
+    return med_objs, dose_objs 
 
 
 def get_data(date):  
@@ -226,18 +229,22 @@ def get_data(date):
         else:
             log.info('Login successful')
             med_list = []
+            dose_list = []
             urls = build_glance_urls()
             for url in urls:
-                med_list.extend(get_meds(auth_session, url))
-        
+                med_objs, dose_objs = get_meds(auth_session, url)
+                med_list.extend(med_objs)
+                dose_list.extend(dose_objs)
+
         auth_session.close()
-        return med_list
+        return med_list, dose_list
 
 log= configure_log()
 
-if __name__ == "__main__":
-    data = get_data(datetime.now())
-    gsheets_export(data)
+if __name__ == "__main(__":
+    med_list, dose_list = get_data(datetime.now())
+    gsheets_export(med_list)
+    gsheets_export(dose_list)
 
 
 # https://mychart.emoryhealthcare.org/MyChart-prd/Authentication/Login/DoLogin

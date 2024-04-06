@@ -127,7 +127,6 @@ def gsheets_export(data, sheet_range):
             values=df.values.tolist())
     ).execute()
 
-19926926986888138
     print('Sheet successfully Updated')
 
 create_service('credentials.json', 'sheets', 'v4',['https://www.googleapis.com/auth/spreadsheets'])

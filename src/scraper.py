@@ -327,25 +327,3 @@ if __name__ == "__main__":
     gsheets_export(med_list,med_data_range)
     gsheets_export(dose_list,dose_data_range)
     gsheets_export(joined_list,join_data_range)
-
-
-# https://mychart.emoryhealthcare.org/MyChart-prd/Authentication/Login/DoLogin
-
-
-# <input name="__RequestVerificationToken" 
-# type="hidden" 
-# value="OGvWMlwWIXHe8ONRHpH1UoSNGPoGDvl2KDytJCnogPo8_kvhQKwM-j4ZdhXl882x1ou3SiykuRyCpS65QhrqM2dphJ01" 
-# autocomplete="off">
-
-# <form class="hidden" 
-# action="/MyChart-prd/Authentication/Login/DoLogin" 
-# autocomplete="off" id="actualLogin" 
-# method="post" target="_top">
-# <input name="__RequestVerificationToken"
-# type="hidden" 
-# value="OGvWMlwWIXHe8ONRHpH1UoSNGPoGDvl2KDytJCnogPo8_kvhQKwM-j4ZdhXl882x1ou3SiykuRyCpS65QhrqM2dphJ01" autocomplete="off">
-# <div class="formcontents">
-# </div>
-# <input type="hidden" name="DeviceId" 
-# value="WEB,276a0198b48a4741b8d6b2605db47678,1QeY2eV4+nFGmxvY5KaPAkBfr5BA/NN6H9Kdku6KeZM=">
-# <input type="hidden" name="postLoginUrl" value=""></form>"td"

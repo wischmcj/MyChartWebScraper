@@ -12,10 +12,6 @@ payload = {
 	"uname": "cwischmeye", 
 	"pass": "" 
 } 
-#  __RequestVerificationToken=OGvWMlwWIXHe8ONRHpH1UoSNGPoGDvl2KDytJCnogPo8_kvhQKwM-j4ZdhXl882x1ou3SiykuRyCpS65QhrqM2dphJ01&DeviceId=WEB%2C276a0198b48a4741b8d6b2605db47678%2C1QeY2eV4%2BnFGmxvY5KaPAkBfr5BA%2FNN6H9Kdku6KeZM%3D&postLoginUrl=&LoginInfo=%7B%22Type%22%3A%22StandardLogin%22%2C%22Credentials%22%3A%7B%22Username%22%3A%22Q3dpc2NobWV5%22%2C%22Password%22%3A%22TXlDaGFydHB3MzMh%22%7D%7D
-# __RequestVerificationToken=OGvWMlwWIXHe8ONRHpH1UoSNGPoGDvl2KDytJCnogPo8_kvhQKwM-j4ZdhXl882x1ou3SiykuRyCpS65QhrqM2dphJ01
-# DeviceId=WEB,276a0198b48a4741b8d6b2605db47678,1QeY2eV4+nFGmxvY5KaPAkBfr5BA/NN6H9Kdku6KeZM=
-# postLoginUrl
 
 # HTTP/1.1 302 Found
 # Cache-Control: no-cache, no-store, must-revalidate
@@ -102,30 +98,4 @@ def nhs_details(drug):
    
     
         return(section_1_text, section_2_text, section_3_text)
- 
     
-
-
-
-# __RequestVerificationToken=OGvWMlwWIXHe8ONRHpH1UoSNGPoGDvl2KDytJCnogPo8_kvhQKwM-j4ZdhXl882x1ou3SiykuRyCpS65QhrqM2dphJ01&DeviceId=WEB%2C276a0198b48a4741b8d6b2605db47678%2C1QeY2eV4%2BnFGmxvY5KaPAkBfr5BA%2FNN6H9Kdku6KeZM%3D&postLoginUrl=&LoginInfo=%7B%22Type%22%3A%22StandardLogin%22%2C%22Credentials%22%3A%7B%22Username%22%3A%22Q3dpc2NobWV5%22%2C%22Password%22%3A%22TXlDaGFydHB3MzMh%22%7D%7D
-
-# https://mychart.emoryhealthcare.org/MyChart-prd/Authentication/Login/DoLogin
-
-
-# <input name="__RequestVerificationToken" 
-# type="hidden" 
-# value="OGvWMlwWIXHe8ONRHpH1UoSNGPoGDvl2KDytJCnogPo8_kvhQKwM-j4ZdhXl882x1ou3SiykuRyCpS65QhrqM2dphJ01" 
-# autocomplete="off">
-
-# <form class="hidden" 
-# action="/MyChart-prd/Authentication/Login/DoLogin" 
-# autocomplete="off" id="actualLogin" 
-# method="post" target="_top">
-# <input name="__RequestVerificationToken"
-# type="hidden" 
-# value="OGvWMlwWIXHe8ONRHpH1UoSNGPoGDvl2KDytJCnogPo8_kvhQKwM-j4ZdhXl882x1ou3SiykuRyCpS65QhrqM2dphJ01" autocomplete="off">
-# <div class="formcontents">
-# </div>
-# <input type="hidden" name="DeviceId" 
-# value="WEB,276a0198b48a4741b8d6b2605db47678,1QeY2eV4+nFGmxvY5KaPAkBfr5BA/NN6H9Kdku6KeZM=">
-# <input type="hidden" name="postLoginUrl" value=""></form>"td"

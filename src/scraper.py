@@ -102,7 +102,7 @@ class Treatment:
 
 login_info = {"Type":"StandardLogin","Credentials":{"Username":"Q3dpc2NobWV5","Password":"TXlDaGFydHB3MzMh"}}
 Device_id = "WEB,276a0198b48a4741b8d6b2605db47678,1QeY2eV4+nFGmxvY5KaPAkBfr5BA/NN6H9Kdku6KeZM="
-login_info = '{"Type":"StandardLogin","Credentials":{"Username":"Q3dpc2NobWV5ZQ==","Password":"TXlDaGFydHB3MzMh"}}'
+login_info = '{"Type":"StandardLogin","Credentials":{"Username":"","Password":""}}'
 medication_url = 'https://mychart.emoryhealthcare.org/MyChart-prd/inside.asp?mode=itinerary&sch=66878'
 itinerary_url = 'https://mychart.emoryhealthcare.org/MyChart-prd/inside.asp?mode=itinerary'
 
@@ -175,7 +175,7 @@ def process_tags(med_elements)-> tuple[list[str], dict]:
     tag_phrases = [
         'intrapleural syringe'
          ,'ivpb'
-         ,'omnicell override pul'
+         ,'omnicell override pull'
         ]
     indicators = [[None]]*len(tag_phrases)
 
@@ -281,7 +281,6 @@ def get_data(start_date:str, end_date:str = None):
         html = BeautifulSoup(req,"html.parser") 
         token = html.find("input", {"name": "__RequestVerificationToken"}).attrs["value"] 
         payload = { "__RequestVerificationToken": token, "DeviceId": Device_id, "postLoginUrl": "", "LoginInfo": login_info}
-
         req = auth_session.post(post_url,data=payload)
         if req.status_code != 200:  
             log.error('Login failed')

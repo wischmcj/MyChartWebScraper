@@ -1,0 +1,9 @@
+{
+    "medication":
+    {
+        "name": "aspirin",
+        "dose": "1 pill",
+        "frequency": "every 4 hours",
+        "route": "oral"
+    }
+}

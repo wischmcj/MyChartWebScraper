@@ -9,13 +9,30 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+# Health Reports
+
+##/MyChart-prd/inside.asp?mode=fshreport&amp;fshid=103&amp;fromlist=1
+
+# <a href="/MyChart-prd/inside.asp?mode=fshreport&amp;fshid=23&amp;fromlist=1" class="nolinelist">Vitals</a>
+# <a href="/MyChart-prd/inside.asp?mode=fshreport&amp;fshid=1400000004&amp;fromlist=1" class="nolinelist">MyChart Peak Flow Flowsheet</a>
+# <a href="/MyChart-prd/inside.asp?mode=fshreport&amp;fshid=1400000003&amp;fromlist=1" class="nolinelist">MyChart Weight Flowsheet</a>
+# <a href="/MyChart-prd/inside.asp?mode=fshreport&amp;fshid=1400000005&amp;fromlist=1" class="nolinelist">MyChart Exercise Flowsheet</a>
+# <a href="/MyChart-prd/inside.asp?mode=fshreport&amp;fshid=1400000006&amp;fromlist=1" class="nolinelist">MyChart CHF Flowsheet</a>
+# <a href="/MyChart-prd/inside.asp?mode=fshreport&amp;fshid=1400000001&amp;fromlist=1" class="nolinelist">Glucose Monitoring Device</a>
+# <a href="/MyChart-prd/inside.asp?mode=fshreport&amp;fshid=98&amp;fromlist=1" class="nolinelist">MyChart Glucose Monitoring Flowsheet</a>
+# <a href="/MyChart-prd/inside.asp?mode=fshreport&amp;fshid=1400000000&amp;fromlist=1" class="nolinelist">Blood Pressure Monitoring Device</a>
+# <a href="/MyChart-prd/inside.asp?mode=fshreport&amp;fshid=99&amp;fromlist=1" class="nolinelist">MyChart Blood Pressure Flowsheet</a>
+# <a href="/MyChart-prd/inside.asp?mode=fshreport&amp;fshid=21002&amp;fromlist=1" class="nolinelist">Lipids</a>
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
 # The ID and range of a sample spreadsheet.
 SPREADSHEET_ID = "1t82EC6UBoc11llvrllULYu_iXhpBrJuXqNJzk1ATKEs"
-RANGE_NAME = "ClassData!A:Fs"
+
+med_range = "MedData!A:F"
+dose_range = "DoseData!A:F"
+dose_range = "DoseData!A:F"
 
 def main():
   """Shows basic usage of the Sheets API.
@@ -96,19 +113,21 @@ def create_service(client_secret_file, api_service_name, api_version, *scopes):
         
 # change 'my_json_file.json' by your downloaded JSON file.
     
-def gsheets_export(data):
+def gsheets_export(data, sheet_range):
     to_write  = [d.__dict__ for d in data ]
-    # df=pd.DataFrame({'A':[1,2,3,4,5],'B':[6,7,8,9,10]})
+    
     df=pd.DataFrame(to_write)
-    gsheetId = '1t82EC6UBoc11llvrllULYu_iXhpBrJuXqNJzk1ATKEs'
-    response_date = service.spreadsheets().values().update(
+    # gsheetId ='1hB1J4AzrK70ZNeZjOPMX7zNGq3UZQIYfDnyzyXj5SfM' #dev
+    gsheetId = '1t82EC6UBoc11llvrllULYu_iXhpBrJuXqNJzk1ATKEs' #prod
+    response_date = service.spreadsheets().values().append(
         spreadsheetId=gsheetId,
         valueInputOption='RAW',
-        range=RANGE_NAME,
+        range=sheet_range,
         body=dict(
             majorDimension='ROWS',
-            values=df.T.reset_index().T.values.tolist())
+            values=df.values.tolist())
     ).execute()
+
     print('Sheet successfully Updated')
 
 create_service('credentials.json', 'sheets', 'v4',['https://www.googleapis.com/auth/spreadsheets'])

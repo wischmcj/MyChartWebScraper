@@ -185,18 +185,22 @@ def process_tags(med_elements)-> tuple[list[str], dict]:
         for idy, element in enumerate(med_elements):
             if phrase.lower() in element.lower():
                 indicators[idx][idy] = True
-                element = element.replace(phrase,'')
+            
+            element = element.replace(phrase,'')
             return_elements[idy] = element
     
-    return clean(return_elements), tag_phrases[0], tag_phrases[1], tag_phrases[2]
+    return clean(return_elements), indicators[0], indicators[1], indicators[2]
 
 
-def process_daily_meds(med_elements):
+def process_daily_meds(med_elements, date):
     # removing html_tags, replacing unicode spaces
-    unicode_removed = [str(s).replace(f'\xa0',' ').replace('<td>','').replace('</td>','') for s in  med_elements]
-    
+    tags_removed= [str(s).replace('<td>','').replace('</td>','').lower() for s in  med_elements]
+    raw = tags_removed
+
+    unicode_removed = [str(s).replace(f'\xa0',' ').replace(' %','%') for s in  tags_removed]
+    log.debug(f'unicode_removed: {unicode_removed}')
     #splitting out time (if applicable)
-    split = [s.split(' - ', maxsplit=1) for s in unicode_removed]
+    split = [s.split('-', maxsplit=1) if ':' in s else ('', s ) for s in unicode_removed]
     # log.info(f'split: {split}')
 
     try:

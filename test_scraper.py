@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from utils import process_daily_meds, get_meds
+from scraper import process_daily_meds, get_meds
 
 class ScraperTests(unittest.TestCase):
 

@@ -29,7 +29,6 @@ SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
 # The ID and range of a sample spreadsheet.
 SPREADSHEET_ID = "1t82EC6UBoc11llvrllULYu_iXhpBrJuXqNJzk1ATKEs"
-
 med_range = "MedData!A:F"
 dose_range = "DoseData!A:F"
 dose_range = "DoseData!A:F"

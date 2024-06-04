@@ -67,7 +67,7 @@ class Treatment:
 
 login_info = {"Type":"StandardLogin","Credentials":{"Username":"Q3dpc2NobWV5","Password":"TXlDaGFydHB3MzMh"}}
 Device_id = "WEB,276a0198b48a4741b8d6b2605db47678,1QeY2eV4+nFGmxvY5KaPAkBfr5BA/NN6H9Kdku6KeZM="
-login_info = '{"Type":"StandardLogin","Credentials":{"Username":"Q3dpc2NobWV5ZQ==","Password":"TXlDaGFydHB3MzMh"}}'
+login_info = '{"Type":"StandardLogin","Credentials":{"Username":"","Password":""}}'
 medication_url = 'https://mychart.emoryhealthcare.org/MyChart-prd/inside.asp?mode=itinerary&sch=66878'
 itinerary_url = 'https://mychart.emoryhealthcare.org/MyChart-prd/inside.asp?mode=itinerary'
 
@@ -252,7 +252,7 @@ if __name__ == "__main(__":
 
 # <input name="__RequestVerificationToken" 
 # type="hidden" 
-# value="OGvWMlwWIXHe8ONRHpH1UoSNGPoGDvl2KDytJCnogPo8_kvhQKwM-j4ZdhXl882x1ou3SiykuRyCpS65QhrqM2dphJ01" 
+# value="" 
 # autocomplete="off">
 
 # <form class="hidden" 
@@ -261,9 +261,9 @@ if __name__ == "__main(__":
 # method="post" target="_top">
 # <input name="__RequestVerificationToken"
 # type="hidden" 
-# value="OGvWMlwWIXHe8ONRHpH1UoSNGPoGDvl2KDytJCnogPo8_kvhQKwM-j4ZdhXl882x1ou3SiykuRyCpS65QhrqM2dphJ01" autocomplete="off">
+# value="" autocomplete="off">
 # <div class="formcontents">
 # </div>
 # <input type="hidden" name="DeviceId" 
-# value="WEB,276a0198b48a4741b8d6b2605db47678,1QeY2eV4+nFGmxvY5KaPAkBfr5BA/NN6H9Kdku6KeZM=">
+# value="">
 # <input type="hidden" name="postLoginUrl" value=""></form>"td"

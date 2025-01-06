@@ -100,7 +100,7 @@ class Treatment:
     side_effects: str
 
 
-login_info = {"Type":"StandardLogin","Credentials":{"Username":"Q3dpc2NobWV5","Password":"TXlDaGFydHB3MzMh"}}
+login_info = {"Type":"StandardLogin","Credentials":{"Username":os.environ['MY_CHART_USER64'],"Password":os.environ['MY_CHART_PASS64']}}
 Device_id = "WEB,276a0198b48a4741b8d6b2605db47678,1QeY2eV4+nFGmxvY5KaPAkBfr5BA/NN6H9Kdku6KeZM="
 login_info = '{"Type":"StandardLogin","Credentials":{"Username":"","Password":""}}'
 medication_url = 'https://mychart.emoryhealthcare.org/MyChart-prd/inside.asp?mode=itinerary&sch=66878'

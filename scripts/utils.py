@@ -2,7 +2,7 @@ import requests
 # import numpy as np
 #!pip install selenium
 # from selenium import webdriver
-
+import os 
 from bs4 import BeautifulSoup 
 
 URL = "https://mychart.emoryhealthcare.org/mychart-prd/Authentication/Login/" 
@@ -26,9 +26,8 @@ payload = {
 # Date: Sat, 10 Feb 2024 16:17:36 GMT
 # Content-Length: 176
 
-login_info = {"Type":"StandardLogin","Credentials":{"Username":"Q3dpc2NobWV5","Password":"TXlDaGFydHB3MzMh"}}
+login_info = {"Type":"StandardLogin","Credentials":{"Username":os.environ['MY_CHART_USER64'],"Password":os.environ['MY_CHART_PASS64']}}
 Device_id = "WEB,276a0198b48a4741b8d6b2605db47678,1QeY2eV4+nFGmxvY5KaPAkBfr5BA/NN6H9Kdku6KeZM="
-login_info = '{"Type":"StandardLogin","Credentials":{"Username":"Q3dpc2NobWV5ZQ==","Password":"TXlDaGFydHB3MzMh"}}'
 medication_url = 'https://mychart.emoryhealthcare.org/MyChart-prd/inside.asp?mode=itinerary&sch=66878'
 itinerary_url = 'https://mychart.emoryhealthcare.org/MyChart-prd/inside.asp?mode=itinerary'
 
@@ -46,9 +45,9 @@ with requests.session() as auth_session:
     med_elements =med_parser.find_all("td")
 
 	# usernameDiv = soup.find("span", class_="p-nickname vcard-username d-block") 
-    breakpoint()
+    # breakpoint()
     # html = BeautifulSoup(req,"html.parser")
-    breakpoint()
+    # breakpoint()
     auth_session.close()
     html.find()
 

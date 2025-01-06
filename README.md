@@ -13,7 +13,7 @@ The MyChart UI can be limiting in terms of
 * The mutablility of historical data
 
 This web scraper aims to solve these problems by pulling data from the MyChart website and logging results in an append only datastore (google sheets).
-Example output data can be seen (here)[https://tinyurl.com/yc5v9rxs]
+Example output data can be seen [here](https://tinyurl.com/yc5v9rxs)
 
 ### Dependencies
 

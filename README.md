@@ -1,9 +1,9 @@
 # MyChartWebScraper 
 
 This is a basic program that extracts medication and dosing information from the my chart website. 
-Hopfully others can use this as a starting point for taking charge of their (or their loved ones) treatment data.
+This is by no means a thoroughly tested code but it is functional for its basic purpouse and is capable of aggregting data that is otherwise obsfucated in the MyChart interface. Hopefully others can use this as a starting point for taking charge of their (or their loved ones) treatment data.
 
-**Disclaimer: Permission was obtained from the relevant parties to allow for the display of the specific PHI present in 'scrapper_log' files, comments with-in scripts and the data contained in google sheets data sheet
+**Permission was obtained from the relevant parties to allow for the display of the specific PHI present in 'scrapper_log' files, comments with-in scripts and the data contained in google sheets data sheet
 
 ## Description
 
@@ -12,10 +12,8 @@ The MyChart UI can be limiting in terms of
 * The lack of analytics tools (particularly day to day change tracking)
 * The mutablility of historical data
 
-This web scraper aims to solve these porblems by pulling data from the MyChart website and logging results in an append only datastore (google sheets).
-
-## Getting Started
-
+This web scraper aims to solve these problems by pulling data from the MyChart website and logging results in an append only datastore (google sheets).
+Example output data can be seen (here)[https://tinyurl.com/yc5v9rxs]
 
 ### Dependencies
 

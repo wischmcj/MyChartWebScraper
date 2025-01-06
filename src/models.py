@@ -94,26 +94,3 @@ class Treatment(Base):
     start_date = Column(String)
 
     end_date = Column(String)
-
-
-# def add_new_book(data,medicine_obj):
-#     """Adds a new book to the system"""
-#     # Does the book exist?
-#     first_name, _, last_name = author_name.partition(" ")
-#     if any(
-#         (data.first_name == first_name)
-#         & (data.last_name == last_name)
-#         & (data.title == book_title)
-#         & (data.publisher == publisher_name)
-#     ):
-#         return data
-#     # Add the new book
-#     return data.append(
-#         {
-#             "first_name": first_name,
-#             "last_name": last_name,
-#             "title": book_title,
-#             "publisher": publisher_name,
-#         },
-#         ignore_index=True,
-#     )

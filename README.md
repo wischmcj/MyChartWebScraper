@@ -3,6 +3,8 @@
 This is a basic program that extracts medication and dosing information from the my chart website. 
 Hopfully others can use this as a starting point for taking charge of their (or their loved ones) treatment data.
 
+**Disclaimer: Permission was obtained from the relevant parties to allow for the display of the specific PHI present in 'scrapper_log' files, comments with-in scripts and the data contained in google sheets data sheet
+
 ## Description
 
 The MyChart UI can be limiting in terms of
@@ -20,15 +22,7 @@ This web scraper aims to solve these porblems by pulling data from the MyChart w
 - Log in information for the patient for whom data is needed
 - A google sheet file and corresponding sheetId
 - A GCP API key with permissions to update and read data fom said google sheet
-     - Credentials to be stored in 'credentials.json' in the project's root directory
-
-### Installing
-
-* TBA
-
-### Executing program
-
-* TBA
+     - Credentials to be stored in 'credentials.json' in the project's root director
 
 ## Authors
 
